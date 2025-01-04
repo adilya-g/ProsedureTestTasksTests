@@ -59,6 +59,47 @@ namespace ProsedureTestTasks.Tests
         }
 
         [Fact]
+        public void Indersection_Send_wrong_Array1_Throw_Exception()
+        {
+            //Agregate
+            var wrongArray = new int[] { 1, 2, 3, 4, 5 };
+            var array2 = new int[] { 4, 7, 2 };
+
+            //Assert
+            Assert.Throws<Exception>(() => TaskExecutor.Intersection(wrongArray, array2));
+        }
+
+        [Fact]
+        public void Intersection_Send_Normal_Arrays_Simmilar_In_Two_Numbers_Return_These_Numbers()
+        {
+            //Aggregate
+            var array1 = new int[] { 1, 2, 3, 4, 5 , 7};
+            var array2 = new int[] { 1, 8, 9, 10, 5 };
+            var expectedResult = new int[] { 1, 5 };
+
+            //Act
+            var result = TaskExecutor.Intersection(array1, array2);
+
+            //Assert
+            Assert.Equal(expectedResult, result);
+        }
+
+        [Fact]
+        public void Intersection_Send_Completely_Different_Arrays_Return_Empty_Array()
+        {
+            //Aggregate
+            var array1 = new int[] { 1, 2, 3, 4, 7 };
+            var array2 = new int[] { 5, 6, 8, 9 };
+            var expectedResult = Array.Empty<int>();
+
+            //Act
+            var result = TaskExecutor.Intersection(array1, array2);
+
+            //Assert
+            Assert.Equal(expectedResult, result);
+        }
+
+        [Fact]
         public void GetCounntUniqueemails_Send_All_Different_Normalised_Return_Input_Length()
         {
             //Aggregate
